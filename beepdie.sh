@@ -17,11 +17,11 @@ beepwait="0.1"
 
 # tty our beep gets written to
 tty="/dev/tty42"
-# actual beep command that gets run with eval
+# actual beep command that gets run with eval. this needs root btw
 beep="printf '\a' &> ${tty}"
 
 # time before we consider our ping / curl a failure
-timeout=5
+timeout="5"
 
 # list of "always up" ipv4 addrs
 ip4s=("1.1.1.1")                         # cloudflare
