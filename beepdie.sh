@@ -3,9 +3,9 @@
 
 RED=$(      tput setaf 1)
 GREEN=$(    tput setaf 2)
-YELLOW=$(   tput setaf 3)
+# YELLOW=$(   tput setaf 3)
 BLUE=$(     tput setaf 4)
-PURPLE=$(   tput setaf 5)
+# PURPLE=$(   tput setaf 5)
 DEFAULT=$(  tput sgr0   )
 
 
@@ -49,11 +49,11 @@ do_target ()
 
     echo "${command} -${proto} ${target}"
 
-    if (eval ${command} -${proto} ${target}) &> /dev/null; then
+    if (eval "${command}" -${proto} "${target}") &> /dev/null; then
         echo "${BLUE}${target}${DEFAULT} is ${GREEN}good${DEFAULT}";
     else
         echo "${BLUE}${target}${DEFAULT} is ${RED}BAD${DEFAULT}";
-        eval ${beep}; sleep ${beepwait}; eval ${beep}; sleep ${beepwait}; eval ${beep};
+        eval "${beep}"; sleep ${beepwait}; eval "${beep}"; sleep ${beepwait}; eval "${beep}";
         exit 1;
     fi
 
@@ -66,11 +66,11 @@ pingips()
     command="ping -w ${timeout} -c 1"
 
     if [[ ${proto} == "6" ]]; then
-        for target in ${ip6s[@]}; do
+        for target in "${ip6s[@]}"; do
             do_target
         done
     else
-        for target in ${ip4s[@]}; do
+        for target in "${ip4s[@]}"; do
             do_target
         done
     fi;
@@ -88,7 +88,7 @@ pingdomains()
 {
     command="ping -w ${timeout} -c 1"
 
-    for target in ${domains[@]}; do
+    for target in "${domains[@]}"; do
         do_target
     done
 
@@ -104,7 +104,7 @@ curldomains()
 {
     command="curl -s -m ${timeout}"
 
-    for target in ${domains[@]}; do
+    for target in "${domains[@]}"; do
         do_target
     done
 }
