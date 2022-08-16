@@ -14,7 +14,7 @@ sleeptime="0.1"
 # time between each beep
 beepwait="0.1"
 
-
+echo "${GREEN}${date}${DEFAULT}"
 # tty our beep gets written to
 tty="/dev/tty42"
 # actual beep command that gets run with eval. this needs root btw
@@ -37,7 +37,7 @@ domains=("cloudflare.com")
 domains+=("google.com")
 domains+=("fastly.com")
 domains+=("ec2-reachability.amazonaws.com")
-domains+=("azure.microsoft.com")
+# domains+=("azure.microsoft.com") # randomly fails lol
 domains+=("facebook.com")
 # domains+=("www.msftconnecttest.com")
 # domains+=("ip6.me")
